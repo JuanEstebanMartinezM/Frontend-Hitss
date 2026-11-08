@@ -1,6 +1,9 @@
 import type { AlarmListResponse, DailySummaryResponse, FilterStatus, UploadResponse } from '../types/alarm';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api/alarms';
+const LOCAL_API_URL = 'http://localhost:8000/api/alarms';
+const PRODUCTION_API_URL = 'https://backend-hitss.onrender.com/api/alarms';
+const API_BASE_URL =
+  import.meta.env.VITE_API_URL || (import.meta.env.PROD ? PRODUCTION_API_URL : LOCAL_API_URL);
 
 export const apiService = {
   async getAlarms(
